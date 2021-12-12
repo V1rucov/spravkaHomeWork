@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+#include <vector>
 using namespace std;
 
 int main() {
@@ -12,28 +13,26 @@ int main() {
     cin.ignore();
     getline(cin,input);
     // парсим строку с кабинетами в целочисленный массив...
-    int arr[roomCount];
+    vector<int> arr;
     int j = 0;
     stringstream ssin(input);
     while (ssin.good() && j <= roomCount){
         string temp;
         ssin >> temp;
-        arr[j] = stoi(temp);
+        arr.push_back(stoi(temp));
         ++j;
     }
     // поехали по алгоритму...
     int current = 1;
-    int sequence[roomCount];
-    sequence[0] = 1;
-    int index = 1;
+    vector<int> sequence;
+    sequence.push_back(1);
     while(true){
         current = arr[current-1];
         if(current != 0) {
-            sequence[index] = current;
-            ++index;
+            sequence.push_back(current);
         }
         else {
-            sequence[index] = -1;
+            sequence.push_back(-1);
             break;
         }
     }
