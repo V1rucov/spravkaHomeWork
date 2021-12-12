@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <algorithm>
 using namespace std;
 
 int main() {
@@ -22,7 +23,7 @@ int main() {
     }
     // поехали по алгоритму...
     int current = 1;
-    int sequence[roomCount*2];
+    int sequence[roomCount];
     sequence[0] = 1;
     int index = 1;
     while(true){
@@ -32,19 +33,22 @@ int main() {
             ++index;
         }
         else {
-            sequence[index] = current;
+            sequence[index] = -1;
             break;
         }
     }
-    // зеркалим (если надо)...
-    /*if(sizeof(sequence)>1){
-        for(int i = sizeof(sequence)-1; i >=0; i--){
-            //
-        }
-    }*/
     // вывод
-    for(int i = 0; i < sizeof(sequence);++i){
-        if(sequence[i] != 0) cout << sequence[i] << "\t";
+    int i = 0;
+    for(i = 0; i < sizeof(sequence)/sizeof(sequence[0]);++i){
+        if(sequence[i] != -1) cout << sequence[i] << " ";
+        else break;
+    }
+    --i;
+    --i;
+    if(sequence[1] != -1){
+        for(; i >= 0; --i){
+            if(sequence[i] != -1) cout << sequence[i] << " ";
+        }
     }
 
     return 0;
