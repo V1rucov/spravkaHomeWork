@@ -38,7 +38,7 @@ int main() {
     }
     // вывод
     int i = 0;
-    for(i = 0; i < sizeof(sequence)/sizeof(sequence[0]);++i){
+    for(i = 0; i < sequence.size();++i){
         if(sequence[i] != -1) cout << sequence[i] << " ";
         else break;
     }
