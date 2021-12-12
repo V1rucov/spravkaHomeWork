@@ -42,8 +42,7 @@ int main() {
         if(sequence[i] != -1) cout << sequence[i] << " ";
         else break;
     }
-    --i;
-    --i;
+    i = i-2;
     if(sequence[1] != -1){
         for(; i >= 0; --i){
             if(sequence[i] != -1) cout << sequence[i] << " ";
